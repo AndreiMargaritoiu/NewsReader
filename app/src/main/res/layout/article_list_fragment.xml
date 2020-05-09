@@ -11,14 +11,15 @@
 
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginBottom="8dp"
             app:items="@{viewModel.newsList}"
             app:layout_constraintBottom_toTopOf="parent"
@@ -27,6 +28,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_article" />
 
-    </ScrollView>
+    </LinearLayout>
 
 </layout>

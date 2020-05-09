@@ -15,6 +15,10 @@ public class NewsListFragment extends Fragment {
 
     private NewsListViewModel viewModel;
 
+    public static NewsListFragment newInstance() {
+        return new NewsListFragment();
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

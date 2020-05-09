@@ -3,6 +3,8 @@ package com.andreimargaritoiu.newsreader;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+
+import com.andreimargaritoiu.newsreader.fragment.NewsListFragment;
 import com.andreimargaritoiu.newsreader.model.NewsListViewModel;
 import io.reactivex.disposables.Disposable;
 
@@ -13,9 +15,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.article_list_fragment);
-        NewsListViewModel viewModel = ViewModelProviders.of(this)
-                .get(NewsListViewModel.class);
+        setContentView(R.layout.main_activity);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, NewsListFragment.newInstance())
+                    .commitNow();
+        }
     }
 
     @Override
