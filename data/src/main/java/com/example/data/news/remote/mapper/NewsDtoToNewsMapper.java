@@ -6,6 +6,7 @@ import com.example.data.news.remote.model.ArticleListDto;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import io.reactivex.functions.Function;
 
 public class NewsDtoToNewsMapper implements Function<ArticleListDto, List<Article>> {
@@ -16,7 +17,7 @@ public class NewsDtoToNewsMapper implements Function<ArticleListDto, List<Articl
 
         for (ArticleDto dto : articleDtos.articles) {
             Article article = new Article(
-                    dto.urlToImage != null ? dto.urlToImage : "", //Adding default values for business model
+                    dto.urlToImage != null ? dto.urlToImage : "",
                     dto.title != null ? dto.title : "",
                     dto.content != null ? dto.content : "",
                     dto.description != null ? dto.description : ""

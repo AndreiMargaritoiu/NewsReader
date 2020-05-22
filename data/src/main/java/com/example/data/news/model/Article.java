@@ -3,12 +3,16 @@ package com.example.data.news.model;
 import androidx.annotation.NonNull;
 
 public class Article {
+
     @NonNull
     public final String imageUrl;
+
     @NonNull
     public final String title;
+
     @NonNull
     public final String content;
+
     @NonNull
     public final String description;
 

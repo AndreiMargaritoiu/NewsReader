@@ -1,6 +1,7 @@
-package com.example.data.news;
+package com.example.data.news.remote;
 
 import androidx.annotation.NonNull;
+
 import com.example.data.news.remote.model.ArticleListDto;
 import com.example.data.remote.NewsApi;
 

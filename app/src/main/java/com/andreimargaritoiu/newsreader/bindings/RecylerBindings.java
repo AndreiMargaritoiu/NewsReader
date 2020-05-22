@@ -3,8 +3,10 @@ package com.andreimargaritoiu.newsreader.bindings;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.andreimargaritoiu.newsreader.adapter.ArticleAdapter;
-import com.andreimargaritoiu.newsreader.model.ArticleItemViewModel;
+
+import com.andreimargaritoiu.newsreader.newslist.adapter.ArticleAdapter;
+import com.andreimargaritoiu.newsreader.newslist.model.ArticleItemViewModel;
+
 import java.util.List;
 
 public class RecylerBindings {
