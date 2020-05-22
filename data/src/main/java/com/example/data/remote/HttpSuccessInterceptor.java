@@ -1,7 +1,7 @@
 package com.example.data.remote;
 
-import com.misca.data.remote.exception.ApiException;
-import com.misca.data.remote.exception.ConnectivityException;
+import com.example.data.remote.exception.ApiException;
+import com.example.data.remote.exception.ConnectivityException;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -11,9 +11,6 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by mihai.mecea on 03.May.2020
- */
 class HttpSuccessInterceptor implements Interceptor {
 
     @NotNull

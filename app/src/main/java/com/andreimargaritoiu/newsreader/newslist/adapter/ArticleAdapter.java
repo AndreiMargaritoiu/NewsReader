@@ -1,11 +1,14 @@
-package com.andreimargaritoiu.newsreader.adapter;
+package com.andreimargaritoiu.newsreader.newslist.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.andreimargaritoiu.newsreader.databinding.ItemArticleBinding;
-import com.andreimargaritoiu.newsreader.model.ArticleItemViewModel;
+import com.andreimargaritoiu.newsreader.newslist.model.ArticleItemViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
 

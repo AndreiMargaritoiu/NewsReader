@@ -1,16 +1,12 @@
 package com.andreimargaritoiu.newsreader;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
+
 import android.os.Bundle;
 
-import com.andreimargaritoiu.newsreader.fragment.NewsListFragment;
-import com.andreimargaritoiu.newsreader.model.NewsListViewModel;
-import io.reactivex.disposables.Disposable;
+import com.andreimargaritoiu.newsreader.newslist.fragment.NewsListFragment;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Disposable disposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +16,6 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, NewsListFragment.newInstance())
                     .commitNow();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (disposable != null) {
-            disposable.dispose();
         }
     }
 }
