@@ -5,6 +5,10 @@
 
     <data>
         <variable
+            name="handler"
+            type="com.andreimargaritoiu.newsreader.newslist.listener.ArticleHandler" />
+
+        <variable
             name="viewModel"
             type="com.andreimargaritoiu.newsreader.newslist.model.ArticleItemViewModel" />
     </data>
@@ -17,31 +21,33 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@{viewModel.articlePic}"
-            tools:src="@drawable/ic_launcher_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="120dp"
+            android:onClickListener="@{() -> handler.onItemSelected(viewModel)}"
+            app:imageUrl="@{viewModel.articlePic}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.articleName}"
-            tools:text="Titlu"
+            android:text="@{viewModel.articleTitle}"
+            android:onClickListener="@{() -> handler.onItemSelected(viewModel)}"
             app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView"
+            tools:text="Titlu" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:inputType="textMultiLine"
-            tools:text="Description fsdfrewtgretsdahytjhdxfwdetgvASDewevdsafesdfasdsdgfdsgfdgfds..."
-            android:maxLength="100"
             android:text="@{viewModel.articleDescription}"
+            android:onClickListener="@{() -> handler.onItemSelected(viewModel)}"
+            android:maxLength="100"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="Description fsdfrewtgretsdahytjhdxfwdetgvASDewevdsasgfdgfds..." />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
