@@ -3,12 +3,12 @@ package com.andreimargaritoiu.newsreader.bindings;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
+import com.andreimargaritoiu.newsreader.R;
 import com.bumptech.glide.Glide;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.databinding.BindingAdapter;
-
 
 public class ImageBindings {
 
@@ -26,6 +26,7 @@ public class ImageBindings {
         Glide
                 .with(imageView.getContext())
                 .load(url)
+                .fallback(R.drawable.ic_launcher_foreground)
                 .into(imageView);
     }
 

@@ -5,14 +5,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreimargaritoiu.newsreader.newslist.adapter.ArticleAdapter;
+import com.andreimargaritoiu.newsreader.newslist.listener.ArticleHandler;
 import com.andreimargaritoiu.newsreader.newslist.model.ArticleItemViewModel;
 
 import java.util.List;
 
 public class RecylerBindings {
 
-    @BindingAdapter({"items"})
-    public static void addFeedItems(RecyclerView recyclerView, List<ArticleItemViewModel> articles) {
+    @BindingAdapter({"items", "articleHandler"})
+    public static void addFeedItems(RecyclerView recyclerView,
+                                    List<ArticleItemViewModel> articles, ArticleHandler handler) {
         ArticleAdapter articleAdapter = (ArticleAdapter) recyclerView.getAdapter();
 
         if (articleAdapter == null) {
@@ -21,6 +23,6 @@ public class RecylerBindings {
             recyclerView.setAdapter(articleAdapter);
         }
 
-        articleAdapter.setItems(articles);
+        articleAdapter.setItems(articles, handler);
     }
 }

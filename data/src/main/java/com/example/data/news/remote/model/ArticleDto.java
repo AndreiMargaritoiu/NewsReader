@@ -10,7 +10,8 @@ public class ArticleDto {
     public final String title;
     public final String author;
 
-    public ArticleDto(SourceDto source, String urlToImage, String url, String content, String description, String title, String author) {
+    public ArticleDto(SourceDto source, String urlToImage, String url, String content,
+                      String description, String title, String author) {
         this.source = source;
         this.urlToImage = urlToImage;
         this.url = url;

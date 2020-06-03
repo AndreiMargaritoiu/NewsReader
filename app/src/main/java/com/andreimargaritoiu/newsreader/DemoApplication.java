@@ -11,7 +11,7 @@ public class DemoApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        this.repoModule = new RepoModule(this);
+        repoModule = new RepoModule(this);
     }
 
     public static RepoModule getRepoProvider() {

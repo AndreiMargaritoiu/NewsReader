@@ -10,5 +10,4 @@ import com.example.data.news.local.ArticleEntity;
 public abstract class NewsDatabase extends RoomDatabase {
 
     public abstract ArticleDao articleDao();
-
 }

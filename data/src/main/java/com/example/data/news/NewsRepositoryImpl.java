@@ -11,6 +11,7 @@ import com.example.data.news.remote.mapper.ArticleEntityToArticlesMapper;
 import com.example.data.news.remote.model.ArticleDto;
 
 import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,6 @@ public class NewsRepositoryImpl implements NewsRepository {
         this.localSource = localSource;
         this.remoteSource = remoteSource;
     }
-
-//    @Override
-//    @NonNull
-//    public Single<List<Article>> getNewsArticles() {
-//        return remoteSource.getNewsArticles()
-//                .map(new NewsDtoToNewsMapper());
-//    }
 
     @NonNull
     @Override
@@ -52,5 +46,12 @@ public class NewsRepositoryImpl implements NewsRepository {
                 .flatMap(localSource::saveItems)
                 .onErrorResumeNext(localSource.getArticleList())
                 .map(new ArticleEntityToArticlesMapper());
+    }
+
+    @NonNull
+    @Override
+    public Single<ArticleEntity> getArticle(String articleTitle) {
+        return localSource.getArticle(articleTitle)
+                .subscribeOn(Schedulers.io());
     }
 }
