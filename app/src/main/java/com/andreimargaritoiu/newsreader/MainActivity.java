@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         navigator = new ArticleNavigator(getSupportFragmentManager());
         ViewModelFactory factory = new ViewModelFactory(getApplication());
-        NewsListViewModel viewModel = new ViewModelProvider(this, factory).get(NewsListViewModel.class);
+        NewsListViewModel viewModel = new ViewModelProvider(this, factory)
+                .get(NewsListViewModel.class);
 
-        disposable = viewModel.events.subscribe(
-                articleEventModel -> navigator.onArticleEvent(articleEventModel),
+        disposable = viewModel.onOpenArticle.subscribe(
+                item -> navigator.navigateToArticle(item.articleTitle.get()),
                 throwable -> Log.d(TAG, "")
         );
     }

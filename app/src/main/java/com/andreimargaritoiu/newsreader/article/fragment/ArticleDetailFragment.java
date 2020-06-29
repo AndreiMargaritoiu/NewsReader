@@ -17,7 +17,7 @@ import com.andreimargaritoiu.newsreader.newslist.model.factory.ViewModelFactory;
 
 public class ArticleDetailFragment extends Fragment {
 
-    public final static String EXTRA_ARTICLE_NAME = "EXTRA_ARTICLE_NAME";
+    public static String EXTRA_ARTICLE_NAME = "EXTRA_ARTICLE_NAME";
     private ArticleDetailsViewModel viewModel;
 
     private static final String TAG = ArticleDetailFragment.class.getName();
@@ -27,7 +27,8 @@ public class ArticleDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         ViewModelFactory factory = new ViewModelFactory(requireActivity().getApplication());
-        viewModel = new ViewModelProvider(requireActivity(), factory).get(ArticleDetailsViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity(), factory)
+                .get(ArticleDetailsViewModel.class);
 
         if (getArguments() != null && getArguments().containsKey(EXTRA_ARTICLE_NAME)) {
             viewModel.initArticleItem(getArguments().getString(EXTRA_ARTICLE_NAME));

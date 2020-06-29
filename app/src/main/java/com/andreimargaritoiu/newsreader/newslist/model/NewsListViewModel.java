@@ -13,10 +13,12 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
+import com.andreimargaritoiu.newsreader.article.fragment.ArticleDetailFragment;
 import com.andreimargaritoiu.newsreader.newslist.listener.ArticleHandler;
 import com.andreimargaritoiu.newsreader.newslist.model.mapper.ArticlesToVMListMapper;
 import com.andreimargaritoiu.newsreader.reactive.SingleLiveEvent;
 import com.example.data.NewsRepository;
+import com.example.data.news.model.Article;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class NewsListViewModel extends AndroidViewModel
     public final SingleLiveEvent<Throwable> error;
     public final SingleLiveEvent<String> openLink;
     private final NewsRepository repo;
-    public PublishSubject<ArticleEventModel> events;
+    public PublishSubject<ArticleItemViewModel> onOpenArticle;
 
     public NewsListViewModel(Application application, NewsRepository repo) {
         super(application);
@@ -41,7 +43,7 @@ public class NewsListViewModel extends AndroidViewModel
         this.isLoading = new ObservableBoolean();
         this.error = new SingleLiveEvent<>();
         this.openLink = new SingleLiveEvent<>();
-        this.events = PublishSubject.create();
+        this.onOpenArticle = PublishSubject.create();
     }
 
     @NonNull
@@ -51,7 +53,6 @@ public class NewsListViewModel extends AndroidViewModel
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void refresh() {
         isLoading.set(true);
-
         repo.getNewsArticles()
                 .map(new ArticlesToVMListMapper())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -76,7 +77,7 @@ public class NewsListViewModel extends AndroidViewModel
     @Override
     public void onItemSelected(ArticleItemViewModel item) {
         Log.d(TAG, "Article " + item.articleTitle.get() + " clicked");
-        events.onNext(new ArticleEventModel(ArticleEventModel.EventType.VIEW_ITEM, item));
+        onOpenArticle.onNext(item);
     }
 
     public void onPoweredBySelected() {
