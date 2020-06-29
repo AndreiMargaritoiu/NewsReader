@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.databinding.ObservableField;
+import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
 import com.andreimargaritoiu.newsreader.article.mapper.EntityToDetailsVMMapper;
@@ -16,7 +18,7 @@ public class ArticleDetailsViewModel extends ViewModel implements LifecycleObser
 
     private NewsRepository repository;
 
-    public final ObservableField<String> title;
+    public ObservableField<String> title;
     public final ObservableField<String> description;
     public final ObservableField<String> content;
     public final ObservableField<String> image;
@@ -39,9 +41,15 @@ public class ArticleDetailsViewModel extends ViewModel implements LifecycleObser
                     .map(new EntityToDetailsVMMapper(this))
                     .subscribe(
                             articleEntity -> Log.d(TAG, "articleItem: onSuccess : "
-                                    + articleEntity.id),
+                                    + articleEntity.title),
                             throwable -> Log.e(TAG, "fetchArticleList error: ", throwable)
                     );
         }
     }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    public void clear() {
+        this.title = new ObservableField<>("");
+    }
+
 }
